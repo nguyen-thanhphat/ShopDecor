@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using ShopAPI.Interfaces;
 using ShopAPI.Models;
+using ShopAPI.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,15 @@ builder.Services.AddDbContext<ShopDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+// Add Scope
+builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+builder.Services.AddScoped<IOfferRepo, OfferRepo>();
+builder.Services.AddScoped<IPayMethodRepo, PayMethodRepo>();
+builder.Services.AddScoped<IRoomRepo, RoomRepo>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -9,5 +9,9 @@ namespace ShopAPI.Interfaces
         Task<Product> CreateProduct(Product product);
         Task<Product> UpdateProduct(Product product);
         Task<bool> DeleteProduct(Product product);
+
+        Product GetProduct(int id);
+        bool ProductExists(int id);
+        bool Save();
     }
 }

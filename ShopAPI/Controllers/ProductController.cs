@@ -128,5 +128,21 @@ namespace ShopAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, _response);
             }
         }
+
+        [HttpGet("{productId}")]
+        [ProducesResponseType(200, Type = typeof(Product))]
+        [ProducesResponseType(400)]
+        public IActionResult GetProduct(int productId)
+        {
+            if (!_productRepository.ProductExists(productId))
+                return NotFound();
+
+            var category = _mapper.Map<ProductDTO>(_productRepository.GetProduct(productId));
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(category);
+        }
     }
 }

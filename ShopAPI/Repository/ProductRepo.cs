@@ -41,6 +41,11 @@ namespace ShopAPI.Repository
             }
         }
 
+        public Product GetProduct(int id)
+        {
+            return _context.Products.Where(e => e.IdProduct == id).FirstOrDefault();
+        }
+
         public async Task<Product> GetProductById(int idProduct)
         {
             try
@@ -78,6 +83,17 @@ namespace ShopAPI.Repository
 
                 throw;
             }
+        }
+
+        public bool ProductExists(int id)
+        {
+            return _context.Products.Any(c => c.IdProduct == id);
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
 
         public async Task<Product> UpdateProduct(Product product)

@@ -24,7 +24,8 @@ builder.Services.AddScoped<IOfferRepo, OfferRepo>();
 builder.Services.AddScoped<IPayMethodRepo, PayMethodRepo>();
 builder.Services.AddScoped<IRoomRepo, RoomRepo>();
 
-
+// Add Mapping
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

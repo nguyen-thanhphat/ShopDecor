@@ -52,5 +52,81 @@ namespace ShopAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, _response);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProducts()
+        {
+            ResponseApi<List<ProductDTO>> _response = new ResponseApi<List<ProductDTO>>();
+            try
+            {
+                List<Product> productList = await _productRepository.GetProducts();
+                if (productList.Count > 0)
+                {
+                    List<ProductDTO> dtoList = _mapper.Map<List<ProductDTO>>(productList);
+                    _response = new ResponseApi<List<ProductDTO>> { Status = true, Msg = "Ok", Vaule = dtoList };
+                }
+                else
+                {
+                    _response = new ResponseApi<List<ProductDTO>> { Status = false, Msg = "No Data" };
+                }
+                return StatusCode(StatusCodes.Status200OK, _response);
+            }
+            catch (Exception ex)
+            {
+                _response = new ResponseApi<List<ProductDTO>> { Status = false, Msg = ex.Message };
+                return StatusCode(StatusCodes.Status500InternalServerError, _response);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(ProductDTO product)
+        {
+            ResponseApi<ProductDTO> _response = new ResponseApi<ProductDTO>();
+
+            try
+            {
+                Product _model = _mapper.Map<Product>(product);
+                Product _productEdited = await _productRepository.UpdateProduct(_model);
+
+                _response = new ResponseApi<ProductDTO>()
+                {
+                    Status = true,
+                    Msg = "Ok",
+                    Vaule = _mapper.Map<ProductDTO>(_productEdited)
+                };
+                return StatusCode(StatusCodes.Status200OK, _response);
+            }
+            catch (Exception ex)
+            {
+                _response = new ResponseApi<ProductDTO> { Status = false, Msg = ex.Message };
+                return StatusCode(StatusCodes.Status500InternalServerError, _response);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int productId)
+        {
+            ResponseApi<bool> _response = new ResponseApi<bool>();
+            try
+            {
+                Product _productFound = await _productRepository.GetProductById(productId);
+                bool deleted = await _productRepository.DeleteProduct(_productFound);
+
+                if (deleted)
+                {
+                    _response = new ResponseApi<bool> { Status = true, Msg = "Ok" };
+                }
+                else
+                {
+                    _response = new ResponseApi<bool> { Status = false, Msg = "Không thể xoá!" };
+                }
+                return StatusCode(StatusCodes.Status200OK, _response);
+            }
+            catch (Exception ex)
+            {
+                _response = new ResponseApi<bool> { Status = false, Msg = ex.Message };
+                return StatusCode(StatusCodes.Status500InternalServerError, _response);
+            }
+        }
     }
 }

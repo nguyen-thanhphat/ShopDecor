@@ -26,24 +26,74 @@ namespace ShopAPI.Repository
             }
         }
 
-        public Task<bool> DeleteProduct(Product product)
+        public async Task<bool> DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Task<Product> GetProductById(int idProduct)
+        public async Task<Product> GetProductById(int idProduct)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Product? productFound = new Product();
+                productFound = await _context.Products.Include(cat => cat.IdCategoryNavigation)
+                                                      .Include(rom => rom.IdRoomNavigation)
+                                                      .Include(ofe => ofe.IdOfferNavigation)
+                    .Where(e => e.IdProduct == idProduct)
+                    .FirstOrDefaultAsync();
+
+                return productFound;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Task<List<Product>> GetProducts()
+        public async Task<List<Product>> GetProducts()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Product> productList = new List<Product>();
+                productList = await _context.Products.Include(cat => cat.IdCategoryNavigation)
+                                                     .Include(rom => rom.IdRoomNavigation)
+                                                     .Include(ofe => ofe.IdOfferNavigation)
+                    .ToListAsync();
+
+                return productList;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Task<Product> UpdateProduct(Product product)
+        public async Task<Product> UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Products.Update(product);
+                await _context.SaveChangesAsync();
+
+                return product;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
 builder.Services.AddScoped<IOfferRepo, OfferRepo>();
 builder.Services.AddScoped<IPayMethodRepo, PayMethodRepo>();
 builder.Services.AddScoped<IRoomRepo, RoomRepo>();
+builder.Services.AddScoped<IProductRepo, ProductRepo>();
 
 // Add Mapping
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

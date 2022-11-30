@@ -22,6 +22,9 @@ namespace ShopAPI.Helper
 
             CreateMap<Room, RoomDTO>();
             CreateMap<RoomDTO, Room>();
+
+            CreateMap<Product, ProductDTO>();
+            CreateMap<ProductDTO, Product>();
         }
     }
 }

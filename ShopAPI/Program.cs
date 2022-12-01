@@ -18,6 +18,13 @@ builder.Services.AddDbContext<ShopDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Add Cors
+builder.Services.AddCors(options => options.AddPolicy(name: "ShopDecorOrigins",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:5100").AllowAnyMethod().AllowAnyHeader();
+    }));
+
 // Add Scope
 builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
 builder.Services.AddScoped<IOfferRepo, OfferRepo>();
@@ -37,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Use Cors
+app.UseCors("ShopDecorOrigins");
 app.UseAuthorization();
 
 app.MapControllers();

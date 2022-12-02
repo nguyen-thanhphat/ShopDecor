@@ -21,6 +21,7 @@ namespace ShopAPI.Controllers
             _mapper = mapper;
         }
 
+        [Route("CreateProduct")]
         [HttpPost]
         public async Task<IActionResult> CreateProduct(ProductDTO product)
         {
@@ -53,6 +54,7 @@ namespace ShopAPI.Controllers
             }
         }
 
+        [Route("GetListProduct")]
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
@@ -78,6 +80,7 @@ namespace ShopAPI.Controllers
             }
         }
 
+        [Route("UpdateProduct")]
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(ProductDTO product)
         {
@@ -103,7 +106,8 @@ namespace ShopAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [Route("DeleteProduct")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteProduct(int productId)
         {
             ResponseApi<bool> _response = new ResponseApi<bool>();
@@ -129,7 +133,8 @@ namespace ShopAPI.Controllers
             }
         }
 
-        [HttpGet("{productId}")]
+        [Route("GetProductById")]
+        [HttpGet]
         [ProducesResponseType(200, Type = typeof(Product))]
         [ProducesResponseType(400)]
         public IActionResult GetProduct(int productId)

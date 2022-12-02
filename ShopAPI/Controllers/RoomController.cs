@@ -19,7 +19,7 @@ namespace ShopAPI.Controllers
             _roomRepository = roomRepository;
             _mapper = mapper;
         }
-
+        [Route("GetListRoom")]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Room>))]
         public IActionResult GetRooms()
@@ -32,7 +32,8 @@ namespace ShopAPI.Controllers
             return Ok(categories);
         }
 
-        [HttpGet("{roomId}")]
+        [Route("GetRoomById")]
+        [HttpGet]
         [ProducesResponseType(200, Type = typeof(Room))]
         [ProducesResponseType(400)]
         public IActionResult GetRoom(int roomId)
@@ -48,6 +49,7 @@ namespace ShopAPI.Controllers
             return Ok(room);
         }
 
+        [Route("CreateRoom")]
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -80,7 +82,8 @@ namespace ShopAPI.Controllers
             return Ok("Successfully created");
         }
 
-        [HttpPut("{roomId}")]
+        [Route("UpdateRoom")]
+        [HttpPut]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -109,7 +112,8 @@ namespace ShopAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{roomId}")]
+        [Route("DeleteRoom")]
+        [HttpDelete]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]

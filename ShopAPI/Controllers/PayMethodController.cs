@@ -19,7 +19,7 @@ namespace ShopAPI.Controllers
             _paymethodRepository = paymenthodRepository;
             _mapper = mapper;
         }
-
+        [Route("GetListPayMethod")]   
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<PaymentMethod>))]
         public IActionResult GetPaymentMethods()
@@ -32,7 +32,8 @@ namespace ShopAPI.Controllers
             return Ok(payMethods);
         }
 
-        [HttpGet("{paymentMethodId}")]
+        [Route("GetPayMethodById")]
+        [HttpGet] 
         [ProducesResponseType(200, Type = typeof(PaymentMethod))]
         [ProducesResponseType(400)]
         public IActionResult GetPaymentMethod(int paymethodId)
@@ -48,6 +49,7 @@ namespace ShopAPI.Controllers
             return Ok(offer);
         }
 
+        [Route("CreatePayMethod")]
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -80,7 +82,8 @@ namespace ShopAPI.Controllers
             return Ok("Successfully created");
         }
 
-        [HttpPut("{paymentMethodId}")]
+        [Route("UpdatePayMethod")]
+        [HttpPut]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -109,7 +112,8 @@ namespace ShopAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{paymentMethodId}")]
+        [Route("DeletePaymethod")]
+        [HttpDelete] 
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]

@@ -19,8 +19,10 @@ namespace ShopAPI.Controllers
             _categoryRepository = categoryRepository;
             _mapper = mapper;
         }
+        [Route("GetListCategories")]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Category>))]
+
         public IActionResult GetCategories()
         {
             var categories = _mapper.Map<List<CategoryDTO>>(_categoryRepository.GetCategories());
@@ -30,8 +32,8 @@ namespace ShopAPI.Controllers
 
             return Ok(categories);
         }
-
-        [HttpGet("{categoryId}")]
+        [Route("GetCategoryById")]
+        [HttpGet] 
         [ProducesResponseType(200, Type = typeof(Category))]
         [ProducesResponseType(400)]
         public IActionResult GetCategory(int categoryId)
@@ -47,6 +49,7 @@ namespace ShopAPI.Controllers
             return Ok(category);
         }
 
+        [Route("CreateCategory")]
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -79,7 +82,8 @@ namespace ShopAPI.Controllers
             return Ok("Successfully created");
         }
 
-        [HttpPut("{categoryId}")]
+        [Route("UpdateCategory")]
+        [HttpPut]   
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -108,7 +112,8 @@ namespace ShopAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{categoryId}")]
+        [Route("DeleteCategory")]
+        [HttpDelete]     
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]

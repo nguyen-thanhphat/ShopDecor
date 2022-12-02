@@ -20,6 +20,7 @@ namespace ShopAPI.Controllers
             _mapper = mapper;
         }
 
+        [Route("GetListOffer")]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Offer>))]
         public IActionResult GetOffers()
@@ -31,8 +32,8 @@ namespace ShopAPI.Controllers
 
             return Ok(offers);
         }
-
-        [HttpGet("{offerId}")]
+        [Route("GetOfferById")]
+        [HttpGet]    
         [ProducesResponseType(200, Type = typeof(Offer))]
         [ProducesResponseType(400)]
         public IActionResult GetOffer(int offerId)
@@ -47,7 +48,7 @@ namespace ShopAPI.Controllers
 
             return Ok(offer);
         }
-
+        [Route("CreateOffer")]
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -80,7 +81,8 @@ namespace ShopAPI.Controllers
             return Ok("Successfully created");
         }
 
-        [HttpPut("{offerId}")]
+        [Route("UpdateOffer")]
+        [HttpPut] 
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -109,7 +111,9 @@ namespace ShopAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{offerId}")]
+
+        [Route("DeleteOffer")]
+        [HttpDelete] 
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]

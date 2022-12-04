@@ -19,8 +19,8 @@ namespace ShopAPI.Models
         public int? AmountPaid { get; set; }
         public string? CreateAt { get; set; }
 
-        public virtual PaymentMethod? IdPayMethodNavigation { get; set; }
-        public virtual User? IdUserNavigation { get; set; }
+        public virtual PaymentMethod? IdPayMethodNavigation { get; set; } = new PaymentMethod(); 
+        public virtual User? IdUserNavigation { get; set; } = new User();
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

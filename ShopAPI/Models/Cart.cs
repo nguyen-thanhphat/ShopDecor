@@ -11,6 +11,8 @@ namespace ShopAPI.Models
         }
 
         public int IdCart { get; set; }
+        public User User { get; set; } = new User();
+        public List<CartItem> CartItems { get; set; } = new();
         public int? IdUser { get; set; }
         public string? Ordered { get; set; }
         public string? OrderedOn { get; set; }

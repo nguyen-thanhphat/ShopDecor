@@ -6,6 +6,8 @@ namespace ShopAPI.Models
     public partial class Review
     {
         public int IdReview { get; set; }
+        public User User { get; set; } = new User();
+        public Product Product { get; set; } = new Product();
         public int? IdReviewer { get; set; }
         public int? IdProduct { get; set; }
         public string? Review1 { get; set; }

@@ -11,8 +11,8 @@ namespace ShopAPI.Models
         public int? IdCart { get; set; }
         public string? CreateAt { get; set; }
 
-        public virtual Cart? IdCartNavigation { get; set; }
-        public virtual User? IdCustommerNavigation { get; set; }
-        public virtual Payment? IdPaymentNavigation { get; set; }
+        public virtual Cart? IdCartNavigation { get; set; } = new Cart();
+        public virtual User? IdCustommerNavigation { get; set; } = new User();
+        public virtual Payment? IdPaymentNavigation { get; set; } = new Payment(); 
     }
 }

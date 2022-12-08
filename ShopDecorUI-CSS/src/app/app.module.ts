@@ -27,10 +27,14 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgMarqueeModule } from 'ng-marquee';
 import { MatDialogModule } from '@angular/material/dialog';
+import { OfferComponent } from './components/offer/offer/offer.component';
+import { EditOfferComponent } from './components/offer/edit-offer/edit-offer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    OfferComponent,
+    EditOfferComponent,
   ],
   imports: [
     BrowserModule,

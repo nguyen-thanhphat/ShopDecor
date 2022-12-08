@@ -1,0 +1,14 @@
+<div *ngIf="offer">
+    <h2>{{ offer.title }}</h2>
+    <div>
+      Title:
+      <input [(ngModel)]="offer.title" placeholder="Title" />
+    </div>
+    <div>
+      Discount:
+      <input [(ngModel)]="offer.discount" placeholder="Discount" />
+    </div>
+    <button (click)="updateOffer(offer)" *ngIf="offer.id">Save</button>
+    <button (click)="deleteOffer(offer)" *ngIf="offer.id"></button>
+    <button (click)="createOffer(offer)" *ngIf="!offer.id">Create</button>
+  </div>

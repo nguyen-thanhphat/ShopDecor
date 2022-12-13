@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 const appRoute: Routes = [
   {
-    path: '',
+    path: 'homepage',
     loadChildren: () =>
       import('./user/homepage/homepage.module').then((m) => m.HomepageModule)
   },
@@ -21,9 +20,7 @@ const appRoute: Routes = [
   declarations: [AppComponent, ],
   imports: [
     BrowserModule, 
-    AppRoutingModule,
-    RouterModule.forRoot(appRoute),
-    RouterModule
+    RouterModule.forRoot(appRoute)
   ],
   providers: [],
   bootstrap: [AppComponent],

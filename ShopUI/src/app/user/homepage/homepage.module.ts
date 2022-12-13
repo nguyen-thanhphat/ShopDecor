@@ -39,6 +39,9 @@ const HomeRouter : Routes = [
         component: OrderComponent
       },
       {
+        path:'', redirectTo: '/homepage', pathMatch: 'full'
+      },
+      {
         path:'**', component: PageNotFoundComponent
       }
     ]

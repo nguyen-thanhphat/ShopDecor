@@ -7,6 +7,8 @@ import { CategoryComponent } from './category/category.component';
 import { RoomComponent } from './room/room.component';
 import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
 import { ProductsComponent } from './products/products.component';
+import { AddEditOfferComponent } from './offer/add-edit-offer/add-edit-offer.component';
+import { ShowOfferComponent } from './offer/show-offer/show-offer.component';
 
 const DashboardRouter : Routes = [
   {
@@ -31,6 +33,10 @@ const DashboardRouter : Routes = [
       {
         path:'san-pham',
         component: ProductsComponent
+      },
+      {
+        path:'loai-thanh-toan',
+        component: PaymentMethodsComponent
       }
     ]
   }
@@ -43,7 +49,9 @@ const DashboardRouter : Routes = [
     CategoryComponent,
     RoomComponent,
     PaymentMethodsComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddEditOfferComponent,
+    ShowOfferComponent
   ],
   imports: [
     CommonModule,

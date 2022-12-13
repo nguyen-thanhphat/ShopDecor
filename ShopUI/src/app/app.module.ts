@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoute: Routes = [
   {
@@ -15,9 +16,15 @@ const appRoute: Routes = [
     loadChildren: () =>
       import('./admin/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  {
+    path:'', redirectTo: '/homepage', pathMatch: 'full'
+  },
+  {
+    path:'**', component: PageNotFoundComponent
+  }
 ];
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent, PageNotFoundComponent, ],
   imports: [
     BrowserModule, 
     RouterModule.forRoot(appRoute)

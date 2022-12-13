@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OrderComponent } from './order/order.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
@@ -19,7 +18,7 @@ const HomeRouter : Routes = [
     path:'', component:HomepageComponent,
     children:[
       {
-        path:'trangchu',
+        path:'homepage',
         component: HomeComponent,
       },
       {
@@ -37,12 +36,6 @@ const HomeRouter : Routes = [
       {
         path:'donhang',
         component: OrderComponent
-      },
-      {
-        path:'', redirectTo: '/homepage', pathMatch: 'full'
-      },
-      {
-        path:'**', component: PageNotFoundComponent
       }
     ]
   }
@@ -57,7 +50,6 @@ const HomeRouter : Routes = [
     HomeComponent,
     LoginComponent,
     OrderComponent,
-    PageNotFoundComponent,
     ProductComponent,
     ProductDetailsComponent,
     ProductsComponent,

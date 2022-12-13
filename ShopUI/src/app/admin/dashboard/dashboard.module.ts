@@ -9,6 +9,11 @@ import { PaymentMethodsComponent } from './payment-methods/payment-methods.compo
 import { ProductsComponent } from './products/products.component';
 import { AddEditOfferComponent } from './offer/add-edit-offer/add-edit-offer.component';
 import { ShowOfferComponent } from './offer/show-offer/show-offer.component';
+import { ApiserviceService } from './apiservice.service';
+import { AppComponent } from 'src/app/app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const DashboardRouter : Routes = [
   {
@@ -55,7 +60,12 @@ const DashboardRouter : Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(DashboardRouter)
-  ]
+    RouterModule.forChild(DashboardRouter),
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers:[ApiserviceService],
+  bootstrap:[AppComponent]
 })
 export class DashboardModule { }

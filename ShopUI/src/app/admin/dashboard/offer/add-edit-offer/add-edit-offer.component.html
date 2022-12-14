@@ -1,0 +1,16 @@
+<form>
+    <div class="mb-6">
+        <label for="title" class="form-label">Chương trình khuyến mại</label>
+        <input type="text" class="form-control" [(ngModel)]="title">
+    </div>
+    <div class="mb-6">
+        <label for="discount" class="form-label">Phần trăm khuyến mại</label>
+        <input type="number" min="1" max="100" class="form-control" [(ngModel)]="discount">
+    </div>
+    <button (click)="addOffer()" *ngIf="offer.id==0" class="btn btn-primary">
+        Thêm
+    </button>
+    <button (click)="updateOffer()" *ngIf="offer.id!=0" class="btn btn-primary">
+        Cập nhật
+    </button>
+</form>

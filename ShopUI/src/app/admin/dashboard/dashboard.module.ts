@@ -11,7 +11,6 @@ import { AddEditOfferComponent } from './offer/add-edit-offer/add-edit-offer.com
 import { ShowOfferComponent } from './offer/show-offer/show-offer.component';
 import { ApiserviceService } from './apiservice.service';
 import { AppComponent } from 'src/app/app.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

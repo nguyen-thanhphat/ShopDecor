@@ -13,6 +13,14 @@ import { ApiserviceService } from './apiservice.service';
 import { AppComponent } from 'src/app/app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddEditCategoryComponent } from './category/add-edit-category/add-edit-category.component';
+import { ShowCategoryComponent } from './category/show-category/show-category.component';
+import { ShowRoomComponent } from './room/show-room/show-room.component';
+import { AddEditRoomComponent } from './room/add-edit-room/add-edit-room.component';
+import { AddEditPamentMethodsComponent } from './payment-methods/add-edit-pament-methods/add-edit-pament-methods.component';
+import { ShowPaymentMethodsComponent } from './payment-methods/show-payment-methods/show-payment-methods.component';
+import { AddEditProductComponent } from './products/add-edit-product/add-edit-product.component';
+import { ShowProductComponent } from './products/show-product/show-product.component';
 
 const DashboardRouter : Routes = [
   {
@@ -55,7 +63,15 @@ const DashboardRouter : Routes = [
     PaymentMethodsComponent,
     ProductsComponent,
     AddEditOfferComponent,
-    ShowOfferComponent
+    ShowOfferComponent,
+    AddEditCategoryComponent,
+    ShowCategoryComponent,
+    ShowRoomComponent,
+    AddEditRoomComponent,
+    AddEditPamentMethodsComponent,
+    ShowPaymentMethodsComponent,
+    AddEditProductComponent,
+    ShowProductComponent
   ],
   imports: [
     CommonModule,

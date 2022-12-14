@@ -24,7 +24,7 @@ export class ApiserviceService {
       return this.http.put(this.apiUrl + `Offer/UpdateOffer?offerId=${id}`, data);
     }
 
-    deleteOffer(id:number|string, data:any){
+    deleteOffer(id:number|string){
       return this.http.delete(this.apiUrl + `Offer/DeleteOffer?offerId=${id}`);
     }
   //#endregion
